@@ -38,6 +38,5 @@
       command: "bin/rails server -d -e production"
       environment:
         RAILS_ENV: production
-        RAILS_SERVE_STATIC_FILES: true
       args:
         chdir: /srv/quero_time
