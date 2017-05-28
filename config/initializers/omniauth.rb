@@ -10,4 +10,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   # end
 end
 
+OmniAuth.config.full_host = "http://162.243.69.190"
 OmniAuth.config.logger = Rails.logger
