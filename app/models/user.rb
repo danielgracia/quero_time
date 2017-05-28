@@ -15,7 +15,7 @@ class User < ApplicationRecord
     end
   end
 
-  def cre ate_team(team_params)
+  def create_team(team_params)
     team = Team.create!(team_params)
     association = UserTeam.create!(user: self, team: team, leader: true)
     self.reload
