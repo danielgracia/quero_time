@@ -11,14 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form_group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :skill_name %>
+    <%= form.text_field :name, id: :skill_name, class: "form-control" %>
     <%= form.label :description %>
-    <%= form.text_field :description, id: :skill_description %>
+    <%= form.text_field :description, id: :skill_description, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Atualizar", class: "btn btn-default"%>
   </div>
 <% end %>
