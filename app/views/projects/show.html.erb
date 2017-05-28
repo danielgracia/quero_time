@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Informações da projeto <%= @project.title %></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <p>
+      <strong>Description:</strong>
+      <%= @project.description %>
+    </p>
+
+    <%= link_to 'Editar', edit_project_path(@project), class: "btn btn-primary" %>
+    <%= link_to 'Voltar', projects_path, class: "btn btn-default" %>
+  </div>
+</div>
