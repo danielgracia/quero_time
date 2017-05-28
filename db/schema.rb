@@ -63,10 +63,12 @@ ActiveRecord::Schema.define(version: 20170528280627) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "count"
+    t.integer "teams_id"
     t.integer "team_id"
     t.index ["skill_id"], name: "index_team_requirements_on_skill_id"
     t.index ["skill_level_id"], name: "index_team_requirements_on_skill_level_id"
     t.index ["team_id"], name: "index_team_requirements_on_team_id"
+    t.index ["teams_id"], name: "index_team_requirements_on_teams_id"
   end
 
   create_table "teams", force: :cascade do |t|
