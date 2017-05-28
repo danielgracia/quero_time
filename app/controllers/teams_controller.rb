@@ -66,10 +66,10 @@ class TeamsController < ApplicationController
     end
 
     def check_team
-      redirect_to teams_path, notice: 'Você já possuí um time' if current_user.team.present?
+      redirect_to teams_path, notice: 'Você já possuí um time' if current_user.team
     end
 
-    def check_team
-      redirect_to teams_path, notice: 'Esse não é seu time' if current_user.team.present?
+    def check_own_team
+      redirect_to teams_path, notice: 'Esse não é seu time' if current_user.team != @team
     end
 end

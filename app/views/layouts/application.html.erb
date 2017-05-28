@@ -44,7 +44,21 @@
 
       <div id="page-wrapper" style="min-height: 494px;">
         <div class="container">
-          <%= yield %>
+          <% if notice.present? %>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="alert alert-info top-notice">
+                  <%= notice %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <%= yield %>
+            </div>
+          </div>
         </div>
       </div>
 
