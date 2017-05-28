@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user=(user)
-    session[:current_user_id] = user.slack_id
+    session[:current_user_id] = user.id
     @current_user = user
   end
 
