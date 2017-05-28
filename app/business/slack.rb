@@ -9,12 +9,13 @@ module Slack
     def post!(invitator, invitation)
       channel = im!(invitator, invitation.user)
 
-      response = HTTPClient.new.post("https://slack.com/api/chat.postMessage", {
+      response = HTTPClient.new.post("https://slack.com/api/chat.postMessage", log({
         "token" => invitator.oauth_token,
         "channel" => channel,
+        "icon_emoji" => ":checkered_flag:", "as_user" => false, 
         "text" => "#{invitator.name} te convidou para participar da equipe #{invitation.team.name}!\n" +
           "Veja aqui: #{url_helpers.invitation_url(invitation)}"
-      }.tap { |h| Rails.logger.info(h.inspect)})
+      }))
 
       payload = JSON.parse(response.body)
 
@@ -26,10 +27,10 @@ module Slack
     end
 
     def im!(from, to)
-      response = HTTPClient.new.post("https://slack.com/api/im.open", {
+      response = HTTPClient.new.post("https://slack.com/api/im.open", log({
         "token" => from.oauth_token,
         "user" => to.user_id
-      }.tap { |h| Rails.logger.info(h.inspect)})
+      }))
 
       payload = JSON.parse(response.body)
 
@@ -38,6 +39,10 @@ module Slack
       else
         raise "[SLACK] #{payload["error"]}"
       end
+    end
+
+    def log(obj)
+      Rails.logger.info("[SLACK] Payload: #{obj.inspect}")
     end
   end
 

@@ -26,9 +26,9 @@ class UsersController < ApplicationController
         if @invitation.save
           Slack::Invitation.post!(current_user, @invitation)
 
-          format.html { redirect_to users_path, notice: 'Convite criado com sucesso.' }
+          redirect_to users_path, notice: 'Convite criado com sucesso.'
         else
-          format.html { render :invite }
+          render :invite
         end
       end
     else
