@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 20170528280627) do
   end
 
   create_table "skill_levels", force: :cascade do |t|
-    t.integer "value"
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
@@ -64,12 +63,10 @@ ActiveRecord::Schema.define(version: 20170528280627) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "count"
-    t.integer "teams_id"
     t.integer "team_id"
     t.index ["skill_id"], name: "index_team_requirements_on_skill_id"
     t.index ["skill_level_id"], name: "index_team_requirements_on_skill_level_id"
     t.index ["team_id"], name: "index_team_requirements_on_team_id"
-    t.index ["teams_id"], name: "index_team_requirements_on_teams_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -81,12 +78,13 @@ ActiveRecord::Schema.define(version: 20170528280627) do
   end
 
   create_table "user_skills", force: :cascade do |t|
-    t.integer "level"
     t.string "user_id"
     t.integer "skill_id"
+    t.integer "skill_level_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["skill_id"], name: "index_user_skills_on_skill_id"
+    t.index ["skill_level_id"], name: "index_user_skills_on_skill_level_id"
     t.index ["user_id"], name: "index_user_skills_on_user_id"
   end
 
