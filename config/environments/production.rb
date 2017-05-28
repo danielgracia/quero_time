@@ -75,7 +75,7 @@ Rails.application.configure do
 
   # Set correct URLs
   config.action_controller.default_url_options = {
-    host: 162.243.69.190
+    host: "162.243.69.190"
   }
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
