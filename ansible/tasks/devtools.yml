@@ -24,3 +24,4 @@
         - ruby2.3-dev
         - ruby2.3
         - rails
+        - nginx
