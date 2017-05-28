@@ -11,8 +11,6 @@
     </div>
   <% end %>
 
-
-
   <div class="form_group">
     <%= form.label :title %>
     <%= form.text_field :title, id: :project_title, class: "form-control" %>
@@ -20,13 +18,11 @@
 
   <div class="form_group">
     <%= form.label :description %>
-    <%= form.text_field :description, id: :project_description, class: "form-control" %>
+    <%= form.text_area :description, id: :project_description, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.hidden_field(:team_id, id: :team_id ) %>
-    <%= form.hidden_field(:user_id, value: current_user.id) %>
-  </div>
+  <%= form.hidden_field(:team_id, id: :team_id ) %>
+  <%= form.hidden_field(:user_id, value: current_user.id) %>
 
   <div class="actions">
     <%= form.submit "Atualizar", class: "btn btn-default" %>

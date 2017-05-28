@@ -40,10 +40,34 @@
       </div>
     <% end %>
 
+    <hr>
 
-    <%= render 'comments/form', {project: @project} %>
+    <%= form_with(model: Comment.new, url: [@post, Comment.new], local: true) do |form| %>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="field">
+            <%= form.label "Comentário" %>
+            <%= form.text_field :description, id: :comment_description %>
+          </div>
 
-    <%= link_to 'Editar', edit_project_path(@project), class: "btn btn-primary" %>
-    <%= link_to 'Voltar', projects_path, class: "btn btn-default" %>
+          <div class="field">
+            <%= form.hidden_field(:project_id, value: @project.id) %>
+          </div>
+
+          <div class="actions">
+            <%= form.submit "Adicionar Comentário" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-lg-4 form-bottom">
+        <%= link_to 'Editar', edit_project_path(@project), class: "btn btn-primary" %>
+        <%= link_to 'Voltar', projects_path, class: "btn btn-default" %>
+      </div>
+    </div>
   </div>
 </div>
