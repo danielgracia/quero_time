@@ -16,10 +16,10 @@
     <% @invitations.each do |invitation| %>
       <tr>
         <td><%= invitation.state %></td>
-        <td><%= invitation.user %></td>
-        <td><%= invitation.team %></td>
+        <td><%= invitation.user.name %></td>
+        <td><%= invitation.team.name %></td>
         <td><%= link_to 'Exibir', invitation, class: "btn btn-default" %></td>
-        <td><%= link_to 'Editar', edit_invitation_path(invitation), class: "btn btn-default" %></td>
+        <td><%= link_to 'Aceitar', accept_invitation_path(invitation), method: :post, class: "btn btn-default" %></td>
         <td><%= link_to 'Remover', invitation, method: :delete, data: { confirm: 'Voce tem certeza?' }, class: "btn btn-default" %></td>
       </tr>
     <% end %>

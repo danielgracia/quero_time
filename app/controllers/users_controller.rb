@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         @invitation = Invitation.new(invitation_params.merge(user_id: params[:id]))
 
         if @invitation.save
-          Slack::Invitation.post!(current_user, @invitation)
+          Slack::Invitation.post!(current_user, @invitation) if Rails.env.production?
 
           redirect_to users_path, notice: 'Convite criado com sucesso.'
         else

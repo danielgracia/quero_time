@@ -1,10 +1,10 @@
 class InvitationsController < ApplicationController
-  before_action :set_invitation, only: [:show, :edit, :update, :destroy]
+  before_action :set_invitation, only: [:show, :edit, :update, :destro, :accept]
 
   # GET /invitations
   # GET /invitations.json
   def index
-    @invitations = Invitation.all
+    @invitations = Invitation.where(user: current_user)
   end
 
   # GET /invitations/1
@@ -12,12 +12,22 @@ class InvitationsController < ApplicationController
   def show
   end
 
+  # POST /invitations/1/accept
+  def accept
+    if current_user != @invitation.user
+      redirect_to invitations_path
+    else
+      current_user.associate_team(@invitation.team)
+      redirect_to teams_path, notice: "Você aceitou o convite para a equipe #{@invitation.team.name}!"
+    end
+  end
+
   # DELETE /invitations/1
   # DELETE /invitations/1.json
   def destroy
     @invitation.destroy
     respond_to do |format|
-      format.html { redirect_to invitations_url, notice: 'Invitation was successfully destroyed.' }
+      format.html { redirect_to invitations_url, notice: 'Convite foi deletado.' }
       format.json { head :no_content }
     end
   end

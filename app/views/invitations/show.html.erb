@@ -7,13 +7,13 @@
 
 <p>
   <strong>Users:</strong>
-  <%= @invitation.user %>
+  <%= @invitation.user.name %>
 </p>
 
 <p>
   <strong>Teams:</strong>
-  <%= @invitation.team %>
+  <%= @invitation.team.name %>
 </p>
 
-<%= link_to 'Editar', edit_invitation_path(@invitation), class: "btn btn-default" %> |
+<%= link_to 'Aceitar', accept_invitation_path(@invitation), method: :post, class: "btn btn-default" %>
 <%= link_to 'Voltar', invitations_path, class: "btn btn-default" %>

@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   get '/bemvindo', to: 'home#welcome', as: :welcome
   # Invite
   match '/users/:id/invite', to: 'users#invite', via: [:get, :post], as: :invite_user
+  post '/invitations/:id/accept', to: 'invitations#accept', as: :accept_invitation
 end

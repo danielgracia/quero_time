@@ -23,6 +23,13 @@ class User < ApplicationRecord
     teams.active.last
   end
 
+  def associate_team(team)
+    transaction do
+      self.teams.clear
+      self.teams << team
+    end
+  end
+
   def create_team(team_params)
     transaction do
       team = Team.new(team_params)

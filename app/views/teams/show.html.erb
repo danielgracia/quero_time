@@ -19,6 +19,15 @@
       <%= @team.leader.name %>
     </p>
 
+    <p>
+      <strong>Integrantes:</strong>
+      <ul>
+        <% @team.users.pluck(:name).each do |user| %>
+          <li><%= user %></li>
+        <% end %>
+      </ul>
+    </p>
+
     <% if @team.project.present? %>
       <p>
         <strong>Projeto:</strong>
@@ -33,7 +42,7 @@
       <p>
         Esta equipe não possui projeto associado ainda.
       </p>
-      <% if @current_user.teams.first.id == @team.id %>
+      <% if current_user.teams.first.id == @team.id %>
         <%= link_to 'Criar Projeto', new_project_path(team_id: @team), class: "btn btn-primary" %>
       <% end %>
     <% end %>
