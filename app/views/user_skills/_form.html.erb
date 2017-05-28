@@ -12,19 +12,18 @@
   <% end %>
 
   <div class="field">
-    FIXME: este campo será hidden 
-    <%= form.label :users_id %>
-    <%= form.text_field :users_id, id: :user_skill_users_id, class: "form-control"  %>
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, value: current_user.id, readonly: true, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :level %>
-    <%= form.select :skills_id, SkillLevel.all.map{ |c| [c.name, c.id]}, {}, class: "form-control"  %>
+    <%= form.label :skill_level_id %>
+    <%= form.select :skill_level_id, SkillLevel.all.map{ |c| [c.name, c.id]}, {}, class: "form-control"  %>
   </div>
 
   <div class="field">
-    <%= form.label :skills_id %>
-    <%= form.select :skills_id, Skill.all.map{ |c| [c.name, c.id]}, {}, class: "form-control"  %>
+    <%= form.label :skill_id %>
+    <%= form.select :skill_id, Skill.all.map{ |c| [c.name, c.id]}, {}, class: "form-control"  %>
   </div>
 
 

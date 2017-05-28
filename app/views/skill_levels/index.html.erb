@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Value</th>
+      <th>Id</th>
       <th>Name</th>
       <th>Description</th>
       <th colspan="3"></th>
@@ -15,7 +15,7 @@
   <tbody>
     <% @skill_levels.each do |skill_level| %>
       <tr>
-        <td><%= skill_level.value %></td>
+        <td><%= skill_level.id %></td>
         <td><%= skill_level.name %></td>
         <td><%= skill_level.description %></td>
         <td><%= link_to 'Show', skill_level %></td>

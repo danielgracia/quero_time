@@ -2,17 +2,17 @@
 
 <p>
   <strong>Level:</strong>
-  <%= @user_skill.level %>
+  <%= @user_skill.skill_level.name %>
 </p>
 
 <p>
   <strong>Users:</strong>
-  <%= @user_skill.users %>
+  <%= @user_skill.user.name %>
 </p>
 
 <p>
   <strong>Skills:</strong>
-  <%= @user_skill.skills %>
+  <%= @user_skill.skill.name %>
 </p>
 
 <%= link_to 'Edit', edit_user_skill_path(@user_skill) %> |
