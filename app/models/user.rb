@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :user_teams, dependent: :destroy
   has_many :teams, through: :user_teams
 
   def self.find_or_create_from_auth_hash(auth_hash)
@@ -16,8 +17,16 @@ class User < ApplicationRecord
   end
 
   def create_team(team_params)
-    team = Team.create!(team_params)
-    association = UserTeam.create!(user: self, team: team, leader: true)
-    self.reload
+    transaction do
+      team = Team.new(team_params)
+
+      if team.save
+        UserTeam.create!(user: self, team: team, leader: true)
+
+        return team, true
+      else
+        return team, false
+      end
+    end
   end
 end
