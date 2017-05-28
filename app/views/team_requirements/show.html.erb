@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Skill:</strong>
+  <%= @team_requirement.skill.name %>
+</p>
+
+<p>
+  <strong>Skill level:</strong>
+  <%= @team_requirement.skill_level.name %>
+</p>
+
+<%= link_to 'Edit', edit_team_requirement_path(@team_requirement) %> |
+<%= link_to 'Back', team_requirements_path %>

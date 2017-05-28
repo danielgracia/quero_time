@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528064816) do
+ActiveRecord::Schema.define(version: 20170528085800) do
 
   create_table "comments", force: :cascade do |t|
     t.string "description"
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 20170528064816) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "team_requirements", force: :cascade do |t|
+    t.integer "skill_id"
+    t.integer "skill_level_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_team_requirements_on_skill_id"
+    t.index ["skill_level_id"], name: "index_team_requirements_on_skill_level_id"
   end
 
   create_table "teams", force: :cascade do |t|
