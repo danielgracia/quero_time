@@ -1,3 +1,5 @@
+<div class="container">
+
 <p id="notice"><%= notice %></p>
 
 <div class="row">
@@ -27,7 +29,7 @@
               <td><%= project.title %></td>
               <td><%= project.description %></td>
               <td><%= (project.team.present? ? project.team.name : "Sem time") %></td>
-              <td><%= (project.user.present? ? project.user.name : "Sem projeto") %></td>
+              <td><%= (project.user.present? ? project.user.name : "Sem idealizador") %></td>
               <td><%= link_to 'Visualizar', project, class: "btn btn-default" %></td>
               <td><%= link_to 'Editar', edit_project_path(project), class: "btn btn-default" %></td>
             </tr>
@@ -36,4 +38,5 @@
       </table>
     </div>
   </div>
+</div>
 </div>
