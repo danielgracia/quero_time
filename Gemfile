@@ -30,6 +30,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth', '~> 1.6.1'
 gem 'omniauth-slack', github: 'kmrshntr/omniauth-slack'
 
+gem 'gentelella-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
