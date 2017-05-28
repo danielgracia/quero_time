@@ -1,5 +1,5 @@
 all: clean theme
-	pandoc --section-divs -t revealjs -s -o index.html slides.md
+	pandoc --section-divs -t revealjs -s -o index.html slides.md -V theme:solarized
 
 theme:
 	pandoc --section-divs -t revealjs -s -o beige.html slides.md -V theme:beige
