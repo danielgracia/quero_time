@@ -1,0 +1,17 @@
+---
+- hosts: server
+  tasks:
+    - git:
+        repo: https://github.com/danielgracia/quero_time.git
+        dest: /srv/quero_time
+        force: yes
+    - gem:
+        name: rake
+        state: latest
+    - gem:
+        name: bundler
+        state: latest
+    - bundler:
+        state: latest
+        chdir: /srv/quero_time
+
