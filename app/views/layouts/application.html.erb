@@ -9,6 +9,36 @@
   </head>
 
   <body>
-    <%= yield %>
+<div id="wrapper">
+
+    <div class="navbar-default sidebar" role="navigation">
+      <div class="sidebar-nav navbar-collapse">
+        <ul class="nav in" id="side-menu">
+
+              <li>
+                  <a href="/" class="active"><i class="fa fa-dashboard fa-fw"></i> Perfil</a>
+              </li>
+              <li>
+                  <a href="/" class="active"><i class="fa fa-dashboard fa-fw"></i> Times</a>
+              </li>
+              <li>
+                  <a href="/" class="active"><i class="fa fa-dashboard fa-fw"></i> Ideias</a>
+              </li>
+              <li>
+                  <a href="/" class="active"><i class="fa fa-dashboard fa-fw"></i> Usaurios</a>
+              </li>
+              <li>
+                  <a href="/" class="active"><i class="fa fa-dashboard fa-fw"></i> Convites</a>
+              </li>
+
+          </ul>
+      </div>
+    </div>
+
+
+    <div id="page-wrapper" style="min-height: 494px;">
+      <%= yield %>
+    </div>
+  </div>
   </body>
 </html>
