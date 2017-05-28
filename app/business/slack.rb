@@ -12,7 +12,7 @@ module Slack
       response = HTTPClient.new.post("https://slack.com/api/chat.postMessage", log({
         "token" => invitator.oauth_token,
         "channel" => channel,
-        "icon_emoji" => ":checkered_flag:", "as_user" => false, 
+        "icon_emoji" => ":checkered_flag:",
         "text" => "#{invitator.name} te convidou para participar da equipe #{invitation.team.name}!\n" +
           "Veja aqui: #{url_helpers.invitation_url(invitation)}"
       }))
@@ -43,6 +43,7 @@ module Slack
 
     def log(obj)
       Rails.logger.info("[SLACK] Payload: #{obj.inspect}")
+      obj
     end
   end
 
