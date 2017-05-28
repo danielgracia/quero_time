@@ -14,9 +14,9 @@
 
     <h2>Habilidade</h2>
 
-    <ul>
-      <%= UserSkill.where( user_id: current_user ).each do |user_skill| %>
-        <li>
+    <ul class="user-skill fa-ul">
+      <%= UserSkill.where( user_id: current_user ).find_each do |user_skill| %>
+        <li class="fa fa-diamond">
           <b><%= user_skill.skill.name %></b> -
           <i><%= user_skill.skill_level.name %></i>
         </li>
