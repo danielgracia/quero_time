@@ -11,6 +11,11 @@
       <%= @user.email %>
     </p>
 
+    <p>
+      <strong>Time:</strong>
+      <%= @user.teams.present? ? link_to(@user.teams.first.name, @user.teams.first) : "Não possui time" %>
+    </p>
+
     <hr>
 
     <h2>Habilidades</h2>
