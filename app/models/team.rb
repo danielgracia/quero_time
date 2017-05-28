@@ -10,4 +10,8 @@ class Team < ApplicationRecord
   def leader
     users.references(:user_teams).where(user_teams: {leader: true}).first
   end
+
+  def full_team
+    self.users.count >= 4
+  end
 end

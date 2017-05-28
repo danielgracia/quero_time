@@ -27,17 +27,21 @@
       </p>
     <% end %>
 
-    <hr>
 
     <% if current_user == @user %>
-      <%= render 'user_skills/form', user_skill: @user_skill %>
-
       <hr>
 
-      <%= link_to 'Adicionar habilidade', new_user_skill_path, class: "btn btn-default" %>
-      <%= link_to 'Editar habilidades', user_skills_path, class: "btn btn-default" %>
+      <div class="col-lg-12">
+        <%= render 'user_skills/form', user_skill: @user_skill %>
+      </div>
+
     <% end %>
+    <br />
+    <br />
+    <br />
+    <hr>
 
     <%= link_to 'Voltar', users_path, class: "btn btn-default" %>
+
   </div>
 </div>
