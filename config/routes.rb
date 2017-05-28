@@ -23,4 +23,8 @@ Rails.application.routes.draw do
   # Invite
   match '/users/:id/invite', to: 'users#invite', via: [:get, :post], as: :invite_user
   post '/invitations/:id/accept', to: 'invitations#accept', as: :accept_invitation
+
+  if Rails.env.production?
+    get '/slides', to: redirect('/slides/index.html')
+  end
 end
