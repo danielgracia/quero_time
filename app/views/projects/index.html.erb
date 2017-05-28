@@ -28,8 +28,8 @@
               <td><%= project.description %></td>
               <td><%= (project.team.present? ? project.team.name : "Sem time") %></td>
               <td><%= project.user.name %></td>
-              <td><%= link_to 'Visualizar', project %></td>
-              <td><%= link_to 'Editar', edit_project_path(project) %></td>
+              <td><%= link_to 'Visualizar', project, class: "btn btn-default" %></td>
+              <td><%= link_to 'Editar', edit_project_path(project), class: "btn btn-default" %></td>
             </tr>
           <% end %>
         </tbody>

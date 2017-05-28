@@ -18,9 +18,9 @@
         <td><%= comment.description %></td>
         <td><%= comment.user %></td>
         <td><%= comment.project %></td>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Exibir', comment, class: "btn btn-default" %></td>
+        <td><%= link_to 'Editar', edit_comment_path(comment), class: "btn btn-default" %></td>
+        <td><%= link_to 'Remover', comment, method: :delete, data: { confirm: 'Voce tem certeza?' }, class: "btn btn-default" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Comment', new_comment_path %>
+<%= link_to 'New Comment', new_comment_path, class: "btn btn-default" %>

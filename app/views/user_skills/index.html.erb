@@ -17,9 +17,9 @@
       <tr>
         <td><%= user_skill.skill_level.name %></td>
         <td><%= user_skill.skill.name %></td>
-        <td><%= link_to 'Show', user_skill %></td>
-        <td><%= link_to 'Edit', edit_user_skill_path(user_skill) %></td>
-        <td><%= link_to 'Destroy', user_skill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Exibir', user_skill, class: "btn btn-default" %></td>
+        <td><%= link_to 'Editar', edit_user_skill_path(user_skill), class: "btn btn-default" %></td>
+        <td><%= link_to 'Remover', user_skill, method: :delete, data: { confirm: 'Voce tem certeza?' }, class: "btn btn-default" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New User Skill', new_user_skill_path %>
+<%= link_to 'New User Skill', new_user_skill_path, class: "btn btn-default" %>

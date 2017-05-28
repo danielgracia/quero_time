@@ -16,9 +16,9 @@
       <tr>
         <td><%= team_requirement.skill.name %></td>
         <td><%= team_requirement.skill_level.name %></td>
-        <td><%= link_to 'Show', team_requirement %></td>
-        <td><%= link_to 'Edit', edit_team_requirement_path(team_requirement) %></td>
-        <td><%= link_to 'Destroy', team_requirement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Exibir', team_requirement, class: "btn btn-default" %></td>
+        <td><%= link_to 'Editar', edit_team_requirement_path(team_requirement), class: "btn btn-default" %></td>
+        <td><%= link_to 'Remover', team_requirement, method: :delete, data: { confirm: 'Voce tem certeza?' }, class: "btn btn-default" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Team Requirement', new_team_requirement_path %>
+<%= link_to 'New Team Requirement', new_team_requirement_path, class: "btn btn-default" %>
