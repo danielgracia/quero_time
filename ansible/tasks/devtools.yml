@@ -25,3 +25,11 @@
         - ruby2.3
         - rails
         - nginx
+    - apt_key:
+        url: https://dl.yarnpkg.com/debian/pubkey.gpg
+        state: present
+    - apt_repository:
+        repo: deb https://dl.yarnpkg.com/debian/ stable main
+        state: present
+    - name: Instalação do yarn
+      action: apt pkg=yarn state=installed update_cache=yes

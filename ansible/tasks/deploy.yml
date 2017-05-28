@@ -24,7 +24,7 @@
         path: /srv/quero_time/tmp/pids/server.pid
       register: server_pid
     - name: kill rails
-      command: "cat tmp/pids/server.pid | xargs kill -9 "
+      shell: "cat tmp/pids/server.pid | xargs kill"
       args:
         chdir: /srv/quero_time
       when: server_pid.stat.exists == True
