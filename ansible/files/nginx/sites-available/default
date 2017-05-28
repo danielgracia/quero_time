@@ -26,4 +26,8 @@ server {
             break;
         }
     }
+
+    location /slides {
+      root /srv/quero_time/slides/
+    }
 }
