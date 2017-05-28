@@ -28,7 +28,16 @@
       args:
         chdir: /srv/quero_time
       when: server_pid.stat.exists == True
+    - name: preprocessa os arquivos
+      command: "bin/rails assets:precompile db:migrate"
+      environment:
+        RAILS_ENV: production
+      args:
+        chdir: /srv/quero_time
     - name: sobe o rails
-      command: "rails server -d"
+      command: "bin/rails server -d"
+      environment:
+        RAILS_ENV: production
+        RAILS_SERVE_STATIC_FILES: true
       args:
         chdir: /srv/quero_time
