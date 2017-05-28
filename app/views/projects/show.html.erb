@@ -12,6 +12,30 @@
       <%= @project.description %>
     </p>
 
+    Comments
+
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>User</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @comments.each do |comment| %>
+            <tr>
+              <td><%= comment.description %></td>
+              <td><%= comment.user.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <%= render 'comments/form', {project: @project} %>
+
     <%= link_to 'Editar', edit_project_path(@project), class: "btn btn-primary" %>
     <%= link_to 'Voltar', projects_path, class: "btn btn-default" %>
   </div>

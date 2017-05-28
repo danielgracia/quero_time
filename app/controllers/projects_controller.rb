@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @comments = Comment.where(project_id: @project.id)
   end
 
   # GET /projects/new

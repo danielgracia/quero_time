@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   resources :skill_levels
+  resources :comments
   resources :invitations
   resources :user_skills
   resources :projects
