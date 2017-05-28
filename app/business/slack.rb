@@ -6,6 +6,10 @@ module Slack
     extend self
     extend Rails.application.routes.url_helpers
 
+    def default_url_options
+      Rails.application.config.action_controller.default_url_options
+    end
+
     def post!(invitator, invitation)
       channel = im!(invitator, invitation.user)
 
