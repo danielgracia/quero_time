@@ -1,6 +1,11 @@
 # Quero TIME
 
-## Parcerias principais
+
+## O projeto
+
+- descrição
+
+## Parcerias principais {data-background="./images/cry_baby.jpg"}
 
 - bla
 - bla
