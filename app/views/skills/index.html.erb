@@ -1,28 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<h1><i class="fa fa-diamond fa-lg"></i>Habilidades</h1>
+  <h1><i class="fa fa-diamond fa-lg"></i>Habilidades</h1>
 
-<table class="table table-hover table-striped">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Descrição</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @skills.order(:name).each do |skill| %>
+  <table class="table table-hover table-striped">
+    <thead>
       <tr>
-        <td><%= skill.name %></td>
-        <td><%= skill.description %></td>
-        <td><%= link_to '', edit_skill_path(skill), class: "btn btn-default fa fa-edit fa-lg" %></td>
-        <td><%= link_to '', skill, method: :delete, data: { confirm: 'Voce tem certeza?' }, class: "btn btn-danger fa fa-trash-o fa-lg" %></td>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @skills.order(:name).each do |skill| %>
+        <tr>
+          <td class="name"><%= skill.name %></td>
+          <td class="description"><%= skill.description %></td>
+          <td><%= link_to '', edit_skill_path(skill), class: "btn btn-default fa fa-edit fa-lg" %></td>
+          <td><%= link_to '', skill, method: :delete, data: { confirm: 'Voce tem certeza?' }, class: "btn btn-danger fa fa-trash-o fa-lg" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'Nova', new_skill_path, class: "btn btn-default fa fa-lg fa-plus" %>
+  <br>
+
+  <%= link_to 'Nova', new_skill_path, class: "btn btn-default fa fa-lg fa-plus" %>
+</div>
