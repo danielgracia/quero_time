@@ -33,7 +33,7 @@
       <p>
         Esta equipe não possui projeto associado ainda.
       </p>
-      <% if @current_user.teams.first.id == @team.id %>
+      <% if @current_user.teams.present? && @current_user.teams.first.id == @team.id %>
         <%= link_to 'Criar Projeto', new_project_path(team_id: @team), class: "btn btn-primary" %>
       <% end %>
     <% end %>
@@ -66,4 +66,3 @@
 </div>
 
 <%= link_to 'Editar habilidades necessárias', team_requirements_path, class: "btn btn-default" %>
-
