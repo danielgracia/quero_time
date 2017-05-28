@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :set_team, only: [:show, :edit, :update]
   before_action :check_team, only: [:new, :create]
+  before_action :check_own_team, only: [:edit, :update]
 
   # GET /teams
   # GET /teams.json
@@ -52,16 +53,6 @@ class TeamsController < ApplicationController
     end
   end
 
-  # DELETE /teams/1
-  # DELETE /teams/1.json
-  def destroy
-    @team.destroy
-    respond_to do |format|
-      format.html { redirect_to teams_url, notice: 'Equipe removida com sucesso.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_team
@@ -75,5 +66,9 @@ class TeamsController < ApplicationController
 
     def check_team
       redirect_to teams_path, notice: 'Você já possuí um time' if current_user.team.present?
+    end
+
+    def check_team
+      redirect_to teams_path, notice: 'Esse não é seu time' if current_user.team.present?
     end
 end

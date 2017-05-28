@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :invite]
+  before_action :set_user, only: [:show, :edit, :update, :invite]
+  before_action :check_user, only: [:edit, :update]
 
   # GET /users
   # GET /users.json
@@ -41,22 +42,12 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'Equipe atualizada com sucesso.' }
+        format.html { redirect_to @user, notice: 'Perfil atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /users/1
-  # DELETE /users/1.json
-  def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'Equipe removida com sucesso.' }
-      format.json { head :no_content }
     end
   end
 
@@ -73,5 +64,9 @@ class UsersController < ApplicationController
 
     def invitation_params
       params.require(:invitation).permit(:team_id)
+    end
+
+    def check_user
+      redirect_to users_path, notice: 'Não pode alterar outros usuários' unless current_user == @user
     end
 end

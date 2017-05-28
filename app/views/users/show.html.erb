@@ -23,8 +23,10 @@
       <% end %>
     </ul>
 
-    <%= link_to 'Adicionar habilidade', new_user_skill_path, class: "btn btn-default" %>
-    <%= link_to 'Editar habilidades', user_skills_path, class: "btn btn-default" %>
+    <%  if current_user == @user %>
+      <%= link_to 'Adicionar habilidade', new_user_skill_path, class: "btn btn-default" %>
+      <%= link_to 'Editar habilidades', user_skills_path, class: "btn btn-default" %>
+    <% end %>
     <%= link_to 'Voltar', users_path, class: "btn btn-default" %>
   </div>
 </div>
