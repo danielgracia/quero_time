@@ -19,16 +19,16 @@
         dest: /etc/nginx/sites-available/default
     - name: restart nginx
       service: name=nginx state=restarted
-  #    - name: verifica se o arquivo server.pid existe
-  #    stat:
-  #      path: /srv/quero_time/tmp/pids/server.pid
-  #    register: server_pid
-  #  - name: kill rails
-  #    command: "cat tmp/pids/server.pid | xargs kill -9 "
-  #    args:
-  #      chdir: /srv/quero_time
-  #    when: server_pid.stat.exists == True
-  #  - name: restart rails
-  #    command: "rails server -d"
-  #    args:
-  #      chdir: /srv/quero_time
+    - name: verifica se o arquivo server.pid existe
+      stat:
+        path: /srv/quero_time/tmp/pids/server.pid
+      register: server_pid
+    - name: kill rails
+      command: "cat tmp/pids/server.pid | xargs kill -9 "
+      args:
+        chdir: /srv/quero_time
+      when: server_pid.stat.exists == True
+    - name: sobe o rails
+      command: "rails server -d"
+      args:
+        chdir: /srv/quero_time
