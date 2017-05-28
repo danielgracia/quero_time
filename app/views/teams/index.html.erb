@@ -24,8 +24,8 @@
             <tr>
               <td><%= team.name %></td>
               <td><%= team.information %></td>
-              <td><%= link_to 'Visualizar', team %></td>
-              <td><%= link_to 'Editar', edit_team_path(team) %></td>
+              <td><%= link_to 'Visualizar', team, class: "btn btn-default" %></td>
+              <td><%= link_to 'Editar', edit_team_path(team), class: "btn btn-default" %></td>
             </tr>
           <% end %>
         </tbody>

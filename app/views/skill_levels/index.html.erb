@@ -18,9 +18,9 @@
         <td><%= skill_level.id %></td>
         <td><%= skill_level.name %></td>
         <td><%= skill_level.description %></td>
-        <td><%= link_to 'Show', skill_level %></td>
-        <td><%= link_to 'Edit', edit_skill_level_path(skill_level) %></td>
-        <td><%= link_to 'Destroy', skill_level, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Exibir', skill_level, class: "btn btn-default" %></td>
+        <td><%= link_to 'Editar', edit_skill_level_path(skill_level), class: "btn btn-default" %></td>
+        <td><%= link_to 'Remover', skill_level, method: :delete, data: { confirm: 'Voce tem certeza?' }, class: "btn btn-default" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Skill Level', new_skill_level_path %>
+<%= link_to 'New Skill Level', new_skill_level_path, class: "btn btn-default" %>
