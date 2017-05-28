@@ -43,7 +43,6 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-    @team_id = params[:team_id]
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to @project, notice: 'Projeto atualizado com sucesso.' }
