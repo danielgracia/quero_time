@@ -21,6 +21,11 @@
     <%= form.text_field :description, id: :project_description, class: "form-control" %>
   </div>
 
+  <div class="field">
+    <%= @team_id %>
+    <%= form.hidden_field(:team_id, value: @team_id) %>
+  </div>
+
   <div class="actions">
     <%= form.submit "Atualizar", class: "btn btn-default" %>
   </div>

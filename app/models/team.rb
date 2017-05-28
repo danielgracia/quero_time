@@ -1,6 +1,7 @@
 class Team < ApplicationRecord
   has_many :user_teams, dependent: :destroy
   has_many :users, through: :user_teams
+  has_one :project
 
   scope :active, -> { where("COALESCE(teams.active, 1)") }
 

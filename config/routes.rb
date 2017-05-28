@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get '/auth/slack_permissions/callback', to: 'sessions#update'
   # Omniauth callback
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  get '/accept_project/:id', to: 'projects#accept_project', as: :accept_project
   # Welcome screen
   get '/bemvindo', to: 'home#welcome', as: :welcome
   # Invite

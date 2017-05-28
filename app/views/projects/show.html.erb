@@ -8,8 +8,24 @@
 <div class="row">
   <div class="col-lg-12">
     <p>
-      <strong>Description:</strong>
+      <strong>Descrição:</strong>
       <%= @project.description %>
+    </p>
+
+    <p>
+      <strong>Time responsável:</strong>
+      <% if @project.team.present? %>
+        <%= @project.team.name %>
+      <% elsif @current_user.teams.present? %>
+        <%= link_to 'Aceitar Projeto', accept_project_path(@project), class: "btn btn-default" %>
+      <% else %>
+        Sem time
+      <% end %>
+    </p>
+
+    <p>
+      <strong>Idealizador do projeto:</strong>
+      <%= @project.user.name %>
     </p>
 
     Comments
