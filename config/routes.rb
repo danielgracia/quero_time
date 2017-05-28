@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :skill_levels
   resources :invitations
   resources :user_skills
   resources :projects
