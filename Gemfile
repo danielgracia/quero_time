@@ -29,11 +29,11 @@ gem 'bcrypt', '~> 3.1.7'
 # Use OmniAuth for authentication
 gem 'omniauth', '~> 1.6.1'
 gem 'omniauth-slack', github: 'kmrshntr/omniauth-slack'
-
+# Use HTTPClient for HTTP stuff
+gem 'httpclient'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
 
 # jQuery UI for the Rails asset pipeline
 gem 'jquery-ui-rails', '~> 5.0.0'
@@ -41,13 +41,11 @@ gem 'jquery-ui-rails', '~> 5.0.0'
 # Bootstrap
 gem 'rails-assets-bootstrap', source: 'https://rails-assets.org'
 
-
 # A jQuery menu plugin
 gem 'rails-assets-metisMenu', source: 'https://rails-assets.org'
 
 gem 'font-awesome-sass', '~> 4.7.0'
-
-gem "select2-rails"
+gem 'select2-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

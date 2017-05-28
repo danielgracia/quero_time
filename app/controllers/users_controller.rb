@@ -16,6 +16,24 @@ class UsersController < ApplicationController
   def edit
   end
 
+  # GET /users/1/invite
+  # POST /users/1/invite
+  def invite
+    if request.post?
+      ApplicationRecord.transaction do
+        @invitation = Invitation.new(invitation_params)
+
+        if @invitation.save
+          Slack::Invitation.post!(current_user, @invitation)
+
+          format.html { redirect_to users_path, notice: 'Convite criado com sucesso.' }
+        else
+          format.html { render :invite }
+        end
+      end
+    end
+  end
+
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
@@ -49,5 +67,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :information, :active)
+    end
+
+    def invitation_params
+      params.require(:invitation).permit(:user_id, :team_id)
     end
 end

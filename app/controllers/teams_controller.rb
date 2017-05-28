@@ -74,6 +74,6 @@ class TeamsController < ApplicationController
     end
 
     def check_team
-      redirect_to team_index_path if current_user.teams.active.exists?
+      redirect_to teams_path if current_user.teams.active.exists?
     end
 end
