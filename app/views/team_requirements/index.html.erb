@@ -1,12 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Team Requirements</h1>
+<h1>Requisitos do Time</h1>
 
 <table class="table table-hover table-striped">
   <thead>
     <tr>
-      <th>Skill</th>
-      <th>Skill level</th>
+      <th>Habilidade</th>
+      <th>Nível</th>
+      <th>Quantiade</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= team_requirement.skill.name %></td>
         <td><%= team_requirement.skill_level.name %></td>
+        <td><%= team_requirement.count %></td>
         <td><%= link_to 'Exibir', team_requirement, class: "btn btn-default" %></td>
         <td><%= link_to 'Editar', edit_team_requirement_path(team_requirement), class: "btn btn-default" %></td>
         <td><%= link_to 'Remover', team_requirement, method: :delete, data: { confirm: 'Voce tem certeza?' }, class: "btn btn-default" %></td>

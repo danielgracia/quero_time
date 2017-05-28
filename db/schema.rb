@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528280625) do
+ActiveRecord::Schema.define(version: 20170528280626) do
+
   create_table "comments", force: :cascade do |t|
     t.string "description"
     t.string "user_id"
@@ -43,7 +44,6 @@ ActiveRecord::Schema.define(version: 20170528280625) do
   end
 
   create_table "skill_levels", force: :cascade do |t|
-    t.integer "value"
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20170528280625) do
     t.integer "skill_level_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "count"
     t.index ["skill_id"], name: "index_team_requirements_on_skill_id"
     t.index ["skill_level_id"], name: "index_team_requirements_on_skill_level_id"
   end
@@ -75,12 +76,13 @@ ActiveRecord::Schema.define(version: 20170528280625) do
   end
 
   create_table "user_skills", force: :cascade do |t|
-    t.integer "level"
     t.string "user_id"
     t.integer "skill_id"
+    t.integer "skill_level_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["skill_id"], name: "index_user_skills_on_skill_id"
+    t.index ["skill_level_id"], name: "index_user_skills_on_skill_level_id"
     t.index ["user_id"], name: "index_user_skills_on_user_id"
   end
 
