@@ -25,30 +25,23 @@
 
     <p>
       <strong>Idealizador do projeto:</strong>
-      <%= @project.user.name %>
+      <%= @project.user.present? ? @project.user.name : "Sem idealizador" %>
     </p>
 
-    Comments
+    <h2>Comentários</h2>
 
-    <div class="table-responsive">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Description</th>
-            <th>User</th>
-          </tr>
-        </thead>
+    <% @comments.each do |comment| %>
+      <div class="comment">
+        <div>
+          <div class="comment-avatar"></div>
+        </div>
+        <div>
+          <div class="comment-name"><%= comment.user.name %></div>
+          <div class="comment-description"><%= comment.description %></div>
+        </div>
+      </div>
+    <% end %>
 
-        <tbody>
-          <% @comments.each do |comment| %>
-            <tr>
-              <td><%= comment.description %></td>
-              <td><%= comment.user.name %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
 
     <%= render 'comments/form', {project: @project} %>
 

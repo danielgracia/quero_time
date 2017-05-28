@@ -12,6 +12,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @team_requirement = TeamRequirement.new
   end
 
   # GET /teams/new
