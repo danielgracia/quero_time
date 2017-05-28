@@ -43,6 +43,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
+    @team_id = params[:team_id]
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to @project, notice: 'Projeto atualizado com sucesso.' }
@@ -85,6 +86,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title, :description, :team_id)
+      params.require(:project).permit(:title, :description, :team_id, :user_id)
     end
 end
