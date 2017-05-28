@@ -1,8 +1,6 @@
 # AjudaEu apresenta...
 
-##  {data-background="./images/janela.jpg"}
-
-## Quero TIME {data-background="./images/janela.jpg"}
+## Quero TIME
 
 ## mas... Time do que?
 
