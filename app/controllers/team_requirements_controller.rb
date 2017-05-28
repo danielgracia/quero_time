@@ -28,7 +28,8 @@ class TeamRequirementsController < ApplicationController
 
     respond_to do |format|
       if @team_requirement.save
-        format.html { redirect_to @team_requirement, notice: 'Team requirement was successfully created.' }
+        team = @current_user.teams.first
+        format.html { redirect_to team, notice: 'Habilidade criada com sucesso.' }
         format.json { render :show, status: :created, location: @team_requirement }
       else
         format.html { render :new }
@@ -42,7 +43,8 @@ class TeamRequirementsController < ApplicationController
   def update
     respond_to do |format|
       if @team_requirement.update(team_requirement_params)
-        format.html { redirect_to @team_requirement, notice: 'Team requirement was successfully updated.' }
+        team = @current_user.teams.first
+        format.html { redirect_to team, notice: 'Requisito de habilidadeatualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @team_requirement }
       else
         format.html { render :edit }
@@ -56,7 +58,8 @@ class TeamRequirementsController < ApplicationController
   def destroy
     @team_requirement.destroy
     respond_to do |format|
-      format.html { redirect_to team_requirements_url, notice: 'Team requirement was successfully destroyed.' }
+      teams = @current_user.teams.first
+      format.html { redirect_to teams, notice: 'Requisito de habilidade removido com sucecsso.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +72,6 @@ class TeamRequirementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_requirement_params
-      params.require(:team_requirement).permit(:count, :skill_id, :skill_level_id)
+      params.require(:team_requirement).permit(:count, :skill_id, :skill_level_id, :team_id)
     end
 end

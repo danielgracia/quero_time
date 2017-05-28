@@ -12,16 +12,23 @@
       <%= @user.email %>
     </p>
 
-    <h2>Habilidade</h2>
+    <h2>Habilidades</h2>
 
-    <ul class="user-skill fa-ul">
-      <%= UserSkill.where( user_id: current_user ).find_each do |user_skill| %>
+    <% @user.user_skills.each do |us_skill| %>
+      <p>
         <li class="fa fa-diamond">
-          <b><%= user_skill.skill.name %></b> -
-          <i><%= user_skill.skill_level.name %></i>
+          <b><%= us_skill.skill.name %></b> -
+          <i><%= us_skill.skill_level.name %></i>
         </li>
-      <% end %>
-    </ul>
+        <%= link_to 'Editar', edit_user_skill_path(us_skill) %>
+        <%= link_to 'Remover', us_skill, method: :delete, data: { confirm: 'Voce tem certeza?' } %>
+      </p>
+    <% end %>
+
+    <% if @current_user.id == @user.id %>
+      <%= render 'user_skills/form', {user_skill: @user_skill}%>
+    <% end %>
+
 
     <%= link_to 'Adicionar habilidade', new_user_skill_path, class: "btn btn-default" %>
     <%= link_to 'Editar habilidades', user_skills_path, class: "btn btn-default" %>
