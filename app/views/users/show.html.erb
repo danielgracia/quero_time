@@ -12,6 +12,8 @@
       <%= @user.email %>
     </p>
 
+    <hr>
+
     <h2>Habilidades</h2>
 
     <% @user.user_skills.each do |us_skill| %>
@@ -25,8 +27,12 @@
       </p>
     <% end %>
 
+    <hr>
+
     <% if current_user == @user %>
       <%= render 'user_skills/form', user_skill: @user_skill %>
+
+      <hr>
 
       <%= link_to 'Adicionar habilidade', new_user_skill_path, class: "btn btn-default" %>
       <%= link_to 'Editar habilidades', user_skills_path, class: "btn btn-default" %>
