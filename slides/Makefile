@@ -1,3 +1,3 @@
 all:
-	pandoc --section-divs -t revealjs -s -o slides.html slides.md
+	pandoc --section-divs -t revealjs -s -o index.html slides.md
 
