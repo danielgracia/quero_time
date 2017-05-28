@@ -28,7 +28,7 @@ module Slack
     def im!(from, to)
       response = HTTPClient.new.post("https://slack.com/api/im.open", {
         "token" => from.oauth_token,
-        "channel" => to.user_id
+        "user" => to.user_id
       }.tap { |h| Rails.logger.info(h.inspect)})
 
       payload = JSON.parse(response.body)
