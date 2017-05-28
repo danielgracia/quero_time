@@ -12,6 +12,19 @@
       <%= @user.email %>
     </p>
 
+    <h2>Habilidade</h2>
+
+    <ul>
+      <%= UserSkill.where( user_id: current_user ).each do |user_skill| %>
+        <li>
+          <b><%= user_skill.skill.name %></b> -
+          <i><%= user_skill.skill_level.name %></i>
+        </li>
+      <% end %>
+    </ul>
+
+    <%= link_to 'Adicionar habilidade', new_user_skill_path, class: "btn btn-default" %>
+    <%= link_to 'Editar habilidades', user_skills_path, class: "btn btn-default" %>
     <%= link_to 'Voltar', users_path, class: "btn btn-default" %>
   </div>
 </div>
