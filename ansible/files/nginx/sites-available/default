@@ -28,6 +28,6 @@ server {
     }
 
     location /slides {
-      root /srv/quero_time/slides/
+      root /srv/quero_time/slides/;
     }
 }
