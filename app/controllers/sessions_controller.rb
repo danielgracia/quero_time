@@ -1,9 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: :create
-
-  def index
-    redirect_to root_path if current_user
-  end
+  skip_before_action :verify_authenticity_token, :check_user
 
   def create
     @user = User.find_or_create_from_auth_hash(auth_hash)

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
-  helper_method :current_user
+  before_action :check_user
+  helper_method :current_user, :login_path
 
   def current_user
     return @current_user if @current_user
@@ -21,5 +21,14 @@ class ApplicationController < ActionController::Base
     session.delete(:current_user_id)
   end
 
+  def check_user
+    redirect_to welcome_path unless current_user
+  end
+
+  if Rails.env.production?
+    def login_path; '/auth/slack'; end
+  else
+    def login_path; '/auth/developer'; end
+  end
 
 end
