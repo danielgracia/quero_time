@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Informações da equipe <%= @team.name %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <p>
+      <strong>Informações:</strong>
+      <%= @team.information %>
+    </p>
+
+    <%= link_to 'Editar', edit_team_path(@team), class: "btn btn-primary" %>
+    <%= link_to 'Voltar', teams_path, class: "btn btn-default" %>
+  </div>
+</div>
