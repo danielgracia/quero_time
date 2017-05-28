@@ -13,7 +13,6 @@ module Slack
         "channel" => channel,
         "pretext" => "#{invitator.name} te convidou para participar da equipe #{invitation.team.name}!\n" +
           "Veja aqui: #{invitation_url(invitation)}"
-        }])
       })
 
       payload = JSON.parse(response.body)
