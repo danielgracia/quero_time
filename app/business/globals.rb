@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
 module Globals
+  SLACK_CLIENT_ID = '2154556232.188966132563'
+  SLACK_CLIENT_SECRET = '7449fbdf6ff86989a05c615d2d284d5e'
   SLACK_TEAM_ID = 'T024JGC6U'
 end

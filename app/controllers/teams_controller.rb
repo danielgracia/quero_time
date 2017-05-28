@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :check_team, except: [:index, :show]
 
   # GET /teams
   # GET /teams.json
@@ -70,5 +71,9 @@ class TeamsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
       params.require(:team).permit(:name, :information, :active)
+    end
+
+    def check_team
+      redirect_to team_index_path if current_user.teams.active.exists?
     end
 end

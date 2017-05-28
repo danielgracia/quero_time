@@ -10,8 +10,7 @@ class User < ApplicationRecord
       u.update!({
         name: auth_hash[:info][:name],
         email: auth_hash[:info][:email],
-        avatar: auth_hash[:info][:image_48],
-        oauth_token: auth_hash[:credentials][:token]
+        avatar: auth_hash[:info][:image_48]
       })
     end
   end

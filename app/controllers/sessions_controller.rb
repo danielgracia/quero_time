@@ -4,6 +4,11 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_or_create_from_auth_hash(auth_hash)
     self.current_user = @user
+    redirect_to permissions_path
+  end
+
+  def update
+    self.current_user.update(oauth_token: auth_hash[:credentials][:token])
     redirect_to root_path
   end
 

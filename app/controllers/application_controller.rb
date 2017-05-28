@@ -25,8 +25,10 @@ class ApplicationController < ActionController::Base
 
   if Rails.env.production?
     def login_path; '/auth/slack'; end
+    def permissions_path: '/auth/slack_permissions'; end
   else
     def login_path; '/auth/developer'; end
+    def permissions_path: root_path; end
   end
 
 end
