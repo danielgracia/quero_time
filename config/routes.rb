@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   # Omniauth callback
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  get '/accept_project/:id', to: 'projects#accept_project', as: :accept_project
   # Welcome screen
   get '/welcome', to: 'home#welcome'
 end

@@ -19,6 +19,25 @@
       <%= @team.leader.name %>
     </p>
 
+    <% if @team.project.present? %>
+      <p>
+        <strong>Projeto:</strong>
+        <%= @team.project.title %>
+      </p>
+
+      <p>
+        <strong>Descrição do projeto:</strong>
+        <%= @team.project.description %>
+      </p>
+    <% else %>
+      <p>
+        Esta equipe não possui projeto associado ainda.
+      </p>
+      <% if @current_user.teams.first.id == @team.id %>
+        <%= link_to 'Criar Projeto', new_project_path(team_id: @team), class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
+
     <%= link_to 'Editar', edit_team_path(@team), class: "btn btn-primary" %>
     <%= link_to 'Voltar', teams_path, class: "btn btn-default" %>
   </div>
