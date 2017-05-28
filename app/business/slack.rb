@@ -4,11 +4,7 @@ require 'httpclient'
 module Slack
   module Invitation
     extend self
-    extend Rails.application.routes.url_helpers
-
-    def default_url_options
-      Rails.application.config.action_controller.default_url_options
-    end
+    delegate :url_helpers, to: %{Rails.application.routes}
 
     def post!(invitator, invitation)
       channel = im!(invitator, invitation.user)
@@ -17,7 +13,7 @@ module Slack
         "token" => invitator.oauth_token,
         "channel" => channel,
         "pretext" => "#{invitator.name} te convidou para participar da equipe #{invitation.team.name}!\n" +
-          "Veja aqui: #{invitation_url(invitation)}"
+          "Veja aqui: #{url_helpers.invitation_url(invitation)}"
       }.tap { |h| Rails.logger.info(h.inspect)})
 
       payload = JSON.parse(response.body)

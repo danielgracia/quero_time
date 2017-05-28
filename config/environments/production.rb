@@ -75,9 +75,9 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   # Set correct URLs
-  config.action_controller.default_url_options = {
-    host: "162.243.69.190"
-  }
+  default_url_options = { host: "162.243.69.190" }
+  config.action_controller.default_url_options = default_url_options
+  routes.default_url_options = default_url_options
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
