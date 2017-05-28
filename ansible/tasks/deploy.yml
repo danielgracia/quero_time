@@ -35,7 +35,7 @@
       args:
         chdir: /srv/quero_time
     - name: sobe o rails
-      command: "bin/rails server -d"
+      command: "bin/rails server -d -e production"
       environment:
         RAILS_ENV: production
         RAILS_SERVE_STATIC_FILES: true
