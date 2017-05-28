@@ -1,6 +1,8 @@
 # AjudaEu apresenta...
 
-## Quero TIME
+##  {data-background="./images/janela.jpg"}
+
+## Quero TIME {data-background="./images/janela.jpg"}
 
 ## mas... Time do que?
 
@@ -51,4 +53,4 @@ Sistema para auxiliar na comunicação de montar uma equipe e poder discutir ide
 
 ## AjudaEu agradece toda ajuda que teve.
 
-# Obrigado ;)
+## Obrigado ;)
