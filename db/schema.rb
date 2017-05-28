@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528024811) do
+ActiveRecord::Schema.define(version: 20170528035035) do
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.string "information"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", primary_key: "slack_id", id: :string, force: :cascade do |t|
     t.string "oauth_token"
