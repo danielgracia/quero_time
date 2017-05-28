@@ -31,7 +31,7 @@
     <% @comments.each do |comment| %>
       <div class="comment">
         <div>
-          <div class="comment-avatar"></div>
+          <div class="comment-avatar"><%= comment.user.avatar.try { |av| image_tag(av) } %></div>
         </div>
         <div>
           <div class="comment-name"><%= comment.user.name %></div>
