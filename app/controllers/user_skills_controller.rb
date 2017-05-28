@@ -28,10 +28,10 @@ class UserSkillsController < ApplicationController
 
     respond_to do |format|
       if @user_skill.save
-        format.html { redirect_to @user_skill, notice: 'User skill was successfully created.' }
+        format.html { redirect_to @current_user, notice: 'Habilidade criada com sucesso.' }
         format.json { render :show, status: :created, location: @user_skill }
       else
-        format.html { render :new }
+        format.html { redirect_to current_user_path }
         format.json { render json: @user_skill.errors, status: :unprocessable_entity }
       end
     end
@@ -42,7 +42,7 @@ class UserSkillsController < ApplicationController
   def update
     respond_to do |format|
       if @user_skill.update(user_skill_params)
-        format.html { redirect_to @user_skill, notice: 'User skill was successfully updated.' }
+        format.html { redirect_to @current_user, notice: 'Habilidade atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @user_skill }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class UserSkillsController < ApplicationController
   def destroy
     @user_skill.destroy
     respond_to do |format|
-      format.html { redirect_to user_skills_url, notice: 'User skill was successfully destroyed.' }
+      format.html { redirect_to @current_user, notice: 'Habilidade removida com sucesso.' }
       format.json { head :no_content }
     end
   end

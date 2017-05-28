@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user_skill = UserSkill.new
   end
 
   # GET /users/1/edit

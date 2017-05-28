@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :user_teams, dependent: :destroy
   has_many :teams, through: :user_teams
+  has_many :user_skills
+  has_many :skills, through: :user_skills
 
   def self.find_or_create_from_auth_hash(auth_hash)
     uid = auth_hash[:uid]

@@ -12,22 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, value: current_user.id, readonly: true, class: "form-control" %>
+    <%= form.hidden_field(:user_id, value: @current_user.id) %>
   </div>
 
-  <div class="field">
-    <%= form.label :skill_level_id %>
-    <%= form.select :skill_level_id, SkillLevel.all.map{ |c| [c.name, c.id]}, {}, class: "form-control"  %>
-  </div>
 
-  <div class="field">
+  <div class="col-lg-4">
     <%= form.label :skill_id %>
     <%= form.select :skill_id, Skill.all.map{ |c| [c.name, c.id]}, {}, class: "form-control"  %>
   </div>
 
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="col-lg-8">
+    <%= form.label :skill_level_id %>
+    <%= form.select :skill_level_id, SkillLevel.all.map{ |c| [c.name, c.id]}, {}, class: "form-control"  %>
   </div>
+
+  <div>
+    <%= form.submit "Atualizar Habilidade", class: "btn btn-primary" %>
+  </div>
+
 <% end %>
