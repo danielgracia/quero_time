@@ -49,23 +49,6 @@ Sistema para auxiliar na comunicação de montar uma equipe e poder discutir ide
 - Informar melhores pessoas para o time
 - Adicionar opção de avaliação da banca
 
-##
-AjudaEu agradece toda ajuda que teve.
-Obrigado
+## AjudaEu agradece toda ajuda que teve.
 
-
-## Bike {data-background="./images/bike.jpg"}
-
-## Bonecos {data-background="./images/bonecos.jpg"}
-
-## Baby {data-background="./images/cry_baby.jpg"}
-
-## Engrenagens {data-background="./images/engrenagens.jpg"}
-
-## Team {data-background="./images/team.jpg"}
-
-## Parcerias principais {data-background="./images/cry_baby.jpg"}
-
-- bla
-- bla
-- bla
+# Obrigado ;)
