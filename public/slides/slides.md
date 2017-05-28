@@ -17,8 +17,7 @@ Sistema para auxiliar na comunicação de montar uma equipe e poder discutir ide
 
 ## Como montar?
 
-- O acesso é via Slack!
-![img](https://ms-vsts.gallerycdn.vsassets.io/extensions/ms-vsts/vss-services-slack/1.0.1/1474455147825/Microsoft.VisualStudio.Services.Icons.Default)
+- Autenticação via Slack
 - Visualizar times criados
 - Convidar interessados para o seu time
 ![img](./images/slack_invitation.png)
