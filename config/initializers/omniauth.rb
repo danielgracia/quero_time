@@ -5,7 +5,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       team: 'T024JGC6U' # Quero Educação team ID
   # else
     provider :developer,
-      fields: [:full_name, :email, :fake_id],
+      fields: [:name, :email, :fake_id],
       uid_field: :fake_id
   # end
 end

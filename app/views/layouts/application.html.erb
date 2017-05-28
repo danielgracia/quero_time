@@ -16,7 +16,10 @@
         <ul class="nav in" id="side-menu">
 
               <li>
-                  <a href="/" class="active"><i class="fa fa-dashboard fa-fw"></i> Perfil</a>
+                <%= link_to current_user, class: "active" do %>
+                  <i class="fa fa-dashboard fa-fw"></i> Perfil
+                <% end %>
+
               </li>
               <li>
                   <a href="/teams" class="active"><i class="fa fa-users fa-fw"></i> Times</a>
@@ -25,7 +28,7 @@
                   <a href="/projects" class="active"><i class="fa fa-lightbulb-o fa-fw"></i> Projetos</a>
               </li>
               <li>
-                  <a href="/" class="active"><i class="fa fa-user fa-fw"></i> Usuários</a>
+                  <a href="/users" class="active"><i class="fa fa-user fa-fw"></i> Usuários</a>
               </li>
               <li>
                   <a href="/invitations" class="active"><i class="fa fa-bell-o fa-fw"></i> Convites</a>
