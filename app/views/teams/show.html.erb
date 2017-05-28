@@ -51,11 +51,13 @@
       <tr>
         <th>Habilidade necessária</th>
         <th>Nível</th>
+        <th>Quantidade</th>
       </tr>
       <%= TeamRequirement.find_each do |req| %>
         <tr>
           <td><%= req.skill.name %></td>
           <td><%= req.skill_level.name %></td>
+          <td><%= req.count %></td>
        </tr>
       <% end %>
     </table>

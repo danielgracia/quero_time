@@ -69,6 +69,6 @@ class TeamRequirementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_requirement_params
-      params.require(:team_requirement).permit(:skill_id, :skill_level_id)
+      params.require(:team_requirement).permit(:count, :skill_id, :skill_level_id)
     end
 end
