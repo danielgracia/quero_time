@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :invitations
   resources :user_skills
   resources :teams
   resources :skills
