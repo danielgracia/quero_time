@@ -13,12 +13,11 @@
  *= require bootstrap
  *= require metisMenu
  *= require sb-admin-2.css
+ *= require select2
+ *= require select2-bootstrap
  *= require_tree .
  *= require_self
  */
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
-*= require select2
-*= require select2-bootstrap
