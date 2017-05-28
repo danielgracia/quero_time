@@ -12,7 +12,7 @@ module Slack
       response = HTTPClient.new.post("https://slack.com/api/chat.postMessage", {
         "token" => invitator.oauth_token,
         "channel" => channel,
-        "pretext" => "#{invitator.name} te convidou para participar da equipe #{invitation.team.name}!\n" +
+        "text" => "#{invitator.name} te convidou para participar da equipe #{invitation.team.name}!\n" +
           "Veja aqui: #{url_helpers.invitation_url(invitation)}"
       }.tap { |h| Rails.logger.info(h.inspect)})
 
