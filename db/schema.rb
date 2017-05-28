@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20170528044909) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "invitations", force: :cascade do |t|
+    t.string "state"
+    t.integer "users_id"
+    t.integer "teams_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["teams_id"], name: "index_invitations_on_teams_id"
+    t.index ["users_id"], name: "index_invitations_on_users_id"
+  end
+
   create_table "skills", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -32,6 +42,16 @@ ActiveRecord::Schema.define(version: 20170528044909) do
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_skills", force: :cascade do |t|
+    t.integer "level"
+    t.integer "users_id"
+    t.integer "skills_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skills_id"], name: "index_user_skills_on_skills_id"
+    t.index ["users_id"], name: "index_user_skills_on_users_id"
   end
 
   create_table "users", primary_key: "slack_id", id: :string, force: :cascade do |t|

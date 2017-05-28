@@ -45,6 +45,7 @@ gem 'rails-assets-bootstrap', source: 'https://rails-assets.org'
 # A jQuery menu plugin
 gem 'rails-assets-metisMenu', source: 'https://rails-assets.org'
 
+gem 'font-awesome-sass', '~> 4.7.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
