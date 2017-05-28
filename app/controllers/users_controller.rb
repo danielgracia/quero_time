@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :invite]
 
   # GET /users
   # GET /users.json
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def invite
     if request.post?
       ApplicationRecord.transaction do
-        @invitation = Invitation.new(invitation_params)
+        @invitation = Invitation.new(invitation_params.merge(user_id: params[:id]))
 
         if @invitation.save
           Slack::Invitation.post!(current_user, @invitation)
@@ -31,6 +31,8 @@ class UsersController < ApplicationController
           format.html { render :invite }
         end
       end
+    else
+      @invitation = Invitation.new
     end
   end
 
@@ -70,6 +72,6 @@ class UsersController < ApplicationController
     end
 
     def invitation_params
-      params.require(:invitation).permit(:user_id, :team_id)
+      params.require(:invitation).permit(:team_id)
     end
 end

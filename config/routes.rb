@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :team_requirements
+  root to: 'home#index'
+
   resources :skill_levels
   resources :comments
   resources :invitations
@@ -10,13 +11,14 @@ Rails.application.routes.draw do
   resources :teams
   resources :skills
   resources :users
+  resources :team_requirements
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'home#index'
   # Slack permissions callback
   get '/auth/slack_permissions/callback', to: 'sessions#update'
   # Omniauth callback
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   # Welcome screen
-  get '/welcome', to: 'home#welcome'
+  get '/bemvindo', to: 'home#welcome', as: :welcome
+  # Invite
+  match '/users/:id/invite', to: 'users#invite', via: [:get, :post], as: :invite_user
 end

@@ -19,6 +19,10 @@ class User < ApplicationRecord
     id.split('-').first
   end
 
+  def team
+    teams.active.last
+  end
+
   def create_team(team_params)
     transaction do
       team = Team.new(team_params)

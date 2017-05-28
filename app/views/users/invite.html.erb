@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Convidar para time</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <%= form_with(url: invite_user_path(@user), scope: :invitation, local: true) do |form| %>
+      <% if @invitation.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(usuario.errors.count, "error") %> prohibited this usuario from being saved:</h2>
+
+          <ul>
+          <% usuario.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form_group">
+        <%= form.label :team %>
+        <%= form.text_field :team, value: current_user.team.name, readonly: true, class: "form-control" %>
+      </div>
+
+      <div class="form_group">
+        <%= form.label :user %>
+        <%= form.text_field :user, value: @user.name, readonly: true, class: "form-control" %>
+      </div>
+
+      <%= form.hidden_field :team_id, value: current_user.team.id %>
+
+      <div class="actions">
+        <%= form.submit "Enviar", class: "btn btn-default" %>
+      </div>
+    <% end %>
+
+    <%= link_to 'Voltar', users_path, class: "btn btn-default" %>
+  </div>
+</div>
+
