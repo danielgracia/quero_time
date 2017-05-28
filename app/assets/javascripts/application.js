@@ -15,4 +15,7 @@
 //= require metisMenu
 //= require rails-ujs
 //= require turbolinks
+//= require select2-full
+//= require select2_locale_pt-BR
 //= require_tree .
+

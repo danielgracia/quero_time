@@ -47,6 +47,8 @@ gem 'rails-assets-metisMenu', source: 'https://rails-assets.org'
 
 gem 'font-awesome-sass', '~> 4.7.0'
 
+gem "select2-rails"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
