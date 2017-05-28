@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Atualizar Informações Pessoais</h1>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <%= render 'form', usuario: @user %>
+
+    <%= link_to 'Visualizar', @user, class: "btn btn-default" %>
+    <%= link_to 'Voltar', users_path, class: "btn btn-default" %>
+  </div>
+</div>

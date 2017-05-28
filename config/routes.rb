@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   # Omniauth callback
-  get '/auth/:provider/callback', to: 'sessions#create'
+  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   # Login
   get '/login', to: 'sessions#index'
+  resources :users
+
 end

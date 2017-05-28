@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Informações de <%= @user.name %></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <p>
+      <strong>Email:</strong>
+      <%= @user.email %>
+    </p>
+
+    <%= link_to 'Voltar', users_path, class: "btn btn-default" %>
+  </div>
+</div>
