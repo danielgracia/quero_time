@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528061719) do
+ActiveRecord::Schema.define(version: 20170528064632) do
 
   create_table "invitations", force: :cascade do |t|
     t.string "state"
-    t.integer "users_id"
-    t.integer "teams_id"
+    t.string "user_id"
+    t.integer "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["teams_id"], name: "index_invitations_on_teams_id"
-    t.index ["users_id"], name: "index_invitations_on_users_id"
+    t.index ["team_id"], name: "index_invitations_on_team_id"
+    t.index ["user_id"], name: "index_invitations_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -54,15 +54,25 @@ ActiveRecord::Schema.define(version: 20170528061719) do
 
   create_table "user_skills", force: :cascade do |t|
     t.integer "level"
-    t.integer "users_id"
-    t.integer "skills_id"
+    t.string "user_id"
+    t.integer "skill_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["skills_id"], name: "index_user_skills_on_skills_id"
-    t.index ["users_id"], name: "index_user_skills_on_users_id"
+    t.index ["skill_id"], name: "index_user_skills_on_skill_id"
+    t.index ["user_id"], name: "index_user_skills_on_user_id"
   end
 
-  create_table "users", primary_key: "slack_id", id: :string, force: :cascade do |t|
+  create_table "user_teams", force: :cascade do |t|
+    t.string "user_id"
+    t.integer "team_id"
+    t.boolean "leader"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_user_teams_on_team_id"
+    t.index ["user_id"], name: "index_user_teams_on_user_id"
+  end
+
+  create_table "users", id: :string, force: :cascade do |t|
     t.string "oauth_token"
     t.string "name"
     t.string "email"
@@ -70,7 +80,7 @@ ActiveRecord::Schema.define(version: 20170528061719) do
     t.integer "lock_version"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["slack_id"], name: "sqlite_autoindex_users_1", unique: true
+    t.index ["id"], name: "sqlite_autoindex_users_1", unique: true
   end
 
 end
