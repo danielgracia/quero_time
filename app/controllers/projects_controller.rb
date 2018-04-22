@@ -65,7 +65,7 @@ class ProjectsController < ApplicationController
   end
 
   def accept_project
-    @project.team = @current_user.teams.first
+    @project.team = @current_user.team.first
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Projeto aceito com sucesso.' }

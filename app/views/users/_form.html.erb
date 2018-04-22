@@ -21,6 +21,13 @@
     <%= form.text_field :email, id: :usuario_email, class: "form-control" %>
   </div>
 
+  <div class="form_group">
+    <%= form.label :personal_information %>
+    <%= form.text_area :personal_information, id: :usuario_personal_information, class: "form-control" %>
+  </div>
+
+
+
   <div class="actions">
     <%= form.submit "Atualizar", class: "btn btn-default" %>
   </div>

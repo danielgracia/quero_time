@@ -1,73 +1,96 @@
 <div class="row">
   <div class="col-lg-12">
-    <h1>Informações da projeto <%= @project.title %></h1>
+    <h1><%= @project.title %></h1>
   </div>
 </div>
 <div class="row">
   <div class="col-lg-12">
     <p>
       <strong>Descrição:</strong>
-      <%= @project.description %>
+      <p class="white-space-pre-wrap"><%= @project.description %></p>
     </p>
-
+    <hr>
     <p>
-      <strong>Equipe responsável:</strong>
+      <strong>Equipe responsável: </strong>
       <% if @project.team.present? %>
         <%= @project.team.name %>
-      <% elsif @current_user.teams.present? %>
-        <%= link_to 'Aceitar Projeto', accept_project_path(@project), class: "btn btn-default" %>
+      <% elsif @current_user.team.present? %>
+        <%= link_to 'Aceitar Projeto', accept_project_path(@project) %>
       <% else %>
         Sem time
       <% end %>
     </p>
 
     <p>
-      <strong>Idealizador do projeto:</strong>
-      <%= @project.user.present? ? @project.user.name : "Sem idealizador" %>
+      <strong>Idealizador do projeto: </strong><%= link_user(@project.user) %>
     </p>
+  </div>
+</div>
 
+<div class="row">
+  <div class="col-lg-12">
+    <hr>
     <h2>Comentários</h2>
 
-    <% @comments.each do |comment| %>
-      <div class="comment">
-        <div>
-          <div class="comment-avatar"><%= comment.user.avatar.try { |av| image_tag(av) } %></div>
-        </div>
-        <div>
-          <div class="comment-name"><%= comment.user.name %></div>
-          <div class="comment-description"><%= comment.description %></div>
-        </div>
-      </div>
+
+    <% if @comments.empty? %>
+      <i>Este projeto não possui comentários</i>
+    <% else %>
+        <!-- <div class="comment">
+          <div>
+            <div class="comment-avatar"></div>
+          </div>
+          <div>
+            <div class="comment-name"></div>
+            <div class="comment-description"></div>
+          </div>
+        </div> -->
+          <ul class="messages_layout">
+            <% @comments.each do |comment| %>
+            <div class="row">
+              <div class="col-lg-12">
+                <li class="from_user left">
+                  <a href="#" class="avatar comment-avatar"><%= comment.user.avatar.try { |av| image_tag(av) } %></a>
+                  <!-- <a href="#" class="avatar"><img src="img/message_avatar1.png"/></a> -->
+                  <div class="message_wrap"> <span class="arrow"></span>
+                    <div class="info"><%= link_user(comment.user, css_class: "name") %> <span class="time"><%= comment.created_at.strftime("%H:%M %d-%m-%Y") %></span></div>
+                    <div class="text white-space-pre-wrap"> <%= comment.description %> </div>
+                  </div>
+                </li>
+              </div>
+            </div>
+            <% end %>
+          </ul>
+
     <% end %>
+  </div>
+</div>
+<hr>
 
-    <hr>
-
-    <%= form_with(model: Comment.new, url: [@post, Comment.new], local: true) do |form| %>
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="field">
-            <%= form.label "Comentário" %>
-            <%= form.text_field :description, id: :comment_description %>
-          </div>
-
-          <div class="field">
-            <%= form.hidden_field(:project_id, value: @project.id) %>
-          </div>
-
-          <div class="actions">
-            <%= form.submit "Adicionar Comentário" %>
-          </div>
-        </div>
+<%= form_with(model: Comment.new, url: [@post, Comment.new], local: true) do |form| %>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="field">
+        <%= form.label "Realizar um novo compentário" %>
+        <%= form.text_area :description, id: :comment_description %>
       </div>
-    <% end %>
 
-    <hr>
+      <div class="field">
+        <%= form.hidden_field(:project_id, value: @project.id) %>
+      </div>
 
-    <div class="row">
-      <div class="col-lg-4 form-bottom">
-        <%= link_to 'Editar', edit_project_path(@project), class: "btn btn-primary" %>
-        <%= link_to 'Voltar', projects_path, class: "btn btn-default" %>
+      <div class="actions">
+        <%= form.submit "Adicionar Comentário" %>
       </div>
     </div>
+  </div>
+<% end %>
+
+<hr>
+
+<div class="row">
+  <div class="col-lg-4 form-bottom">
+    <%= link_to 'Editar', edit_project_path(@project), class: "btn btn-primary" if can_edit_project?(@project) %>
+    <%= link_to 'Voltar', projects_path, class: "btn btn-default" %>
   </div>
 </div>

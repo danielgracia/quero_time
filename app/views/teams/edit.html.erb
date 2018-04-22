@@ -11,5 +11,6 @@
 
     <%= link_to 'Visualizar', @team, class: "btn btn-default" %>
     <%= link_to 'Voltar', teams_path, class: "btn btn-default" %>
+    <%= link_to 'Sair do time', team_give_up_path(current_user), class: "btn btn-default", method: :post, :data => {:confirm => "Tem certeza que deseja sair deste time?"} %>
   </div>
 </div>

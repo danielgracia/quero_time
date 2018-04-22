@@ -2,9 +2,9 @@ class HomeController < ApplicationController
   skip_before_action :check_user, only: :welcome
 
   def index
-    if current_user.teams.blank?
+    if current_user.team.nil?
       redirect_to teams_path
-    elsif current_user.teams.first.full_team
+    elsif current_user.team.full_team
       redirect_to projects_path
     else
       redirect_to users_path

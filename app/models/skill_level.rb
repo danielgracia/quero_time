@@ -1,2 +1,0 @@
-class SkillLevel < ApplicationRecord
-end

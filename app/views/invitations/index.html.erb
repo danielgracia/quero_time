@@ -3,20 +3,48 @@
 <table class="table table-hover table-striped">
   <thead>
     <tr>
-      <th>Equipes</th>
+      <th>Equipe</th>
+      <th>Informações</th>
+      <th>Qnt de integrantes</th>
       <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @invitations.where(user_id: current_user).each do |invitation| %>
+    <% @invitations.where(state: "WAITING").each do |invitation| %>
       <tr>
         <td><%= invitation.team.name %></td>
-        <td><%= link_to 'Aceitar', accept_invitation_path(invitation), method: :post, class: "btn btn-default" %></td>
-        <td><%= link_to 'Remover', invitation, method: :delete, data: { confirm: 'Voce tem certeza?' }, class: "btn btn-default" %></td>
+        <td><%= invitation.team.information %></td>
+        <td><%= invitation.team.users.count %></td>
+        <td><%= link_to 'Aceitar', accept_invitation_path(invitation), method: :post %></td>
+        <td><%= link_to 'Remover', invitation, method: :delete, data: { confirm: 'Voce tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<% if(@invitations.where(state: "REFUSE").count > 0) %>
+  <hr>
+  <h2>Recusados</h2>
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>Equipe</th>
+        <th>Informações</th>
+        <th>Qnt de integrantes</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @invitations.where(state: "REFUSE").each do |invitation| %>
+        <tr>
+          <td><%= invitation.team.name %></td>
+          <td><%= invitation.team.information %></td>
+          <td><%= invitation.team.users.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

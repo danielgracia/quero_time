@@ -1,12 +1,22 @@
-<div class="container single-message">
-  <%= image_tag("logo_2.png") %>
+<div class="account-container">
 
-  <h1>Bem-Vindo ao QueroEquipe!</h3>
+	<div class="content clearfix">
+    <%= image_tag("logo.png") %>
+    <h1>Bem-Vindo ao QueroEquipe!</h3>
 
-  <p>
-    O QueroEquipe é a nova plataforma de organização de competições e eventos da Quero!
-    Para acessar, basta clicar no botão abaixo e fazer login através do seu Slack.
-  </p>
+		<div class="login-fields">
 
-  <%= link_to image_tag("https://api.slack.com/img/sign_in_with_slack.png"), login_path %>
-</div>
+      <p>
+        O QueroEquipe é a nova plataforma de organização de competições e eventos da Quero!
+        Para acessar, basta clicar no botão abaixo e fazer login através do seu Slack.
+      </p>
+
+		</div> <!-- /login-fields -->
+
+		<div class="login-actions">
+
+			<%= link_to image_tag("https://api.slack.com/img/sign_in_with_slack.png"), login_path %>
+
+		</div> <!-- .actions -->
+	</div> <!-- /content -->
+</div> <!-- /account-container -->

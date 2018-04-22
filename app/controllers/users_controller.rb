@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :invite]
+  before_action :set_user, only: [:show, :edit, :update, :invite, :team_give_up]
   before_action :check_user, only: [:edit, :update]
 
   # GET /users
@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user_skill = UserSkill.new
   end
 
   # GET /users/1/edit
@@ -23,7 +22,7 @@ class UsersController < ApplicationController
   def invite
     if request.post?
       ApplicationRecord.transaction do
-        @invitation = Invitation.new(invitation_params.merge(user_id: params[:id]))
+        @invitation = Invitation.new(invitation_params.merge(user_id: params[:id], state: "WAITING"))
 
         if @invitation.save
           Slack::Invitation.post!(current_user, @invitation) if Rails.env.production?
@@ -52,6 +51,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def team_give_up
+    team = @user.team
+    @user.team = nil
+    if @user.save!
+      team.change_team_leader
+      redirect_to teams_path, notice: 'Removido do time com sucesso.'
+    else
+      redirect_to teams_path, notice: 'Ocorreu um erro ao tentar sair do time.'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -60,7 +70,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :information, :active)
+      params.require(:user).permit(:name, :information, :active, :personal_information)
     end
 
     def invitation_params
@@ -70,4 +80,5 @@ class UsersController < ApplicationController
     def check_user
       redirect_to users_path, notice: 'Não pode alterar outros usuários' unless current_user == @user
     end
+
 end

@@ -21,6 +21,11 @@
     <%= form.text_field :information, id: :team_information, class: "form-control" %>
   </div>
 
+  <div class="form_group">
+    <%= form.label :observations %>
+    <%= form.text_area :observations, id: :team_observations, class: "form-control" %>
+  </div>
+
   <div>
     <%= form.submit "Atualizar", class: "btn btn-default" %>
   </div>

@@ -12,7 +12,6 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
-    @team_requirement = TeamRequirement.new
   end
 
   # GET /teams/new
@@ -62,7 +61,7 @@ class TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:name, :information, :active)
+      params.require(:team).permit(:name, :information, :active, :observations)
     end
 
     def check_team

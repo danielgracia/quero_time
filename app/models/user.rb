@@ -1,8 +1,5 @@
 class User < ApplicationRecord
-  has_many :user_teams, dependent: :destroy
-  has_many :teams, through: :user_teams
-  has_many :user_skills
-  has_many :skills, through: :user_skills
+  belongs_to :team, optional: true
 
   def self.find_or_create_from_auth_hash(auth_hash)
     uid = auth_hash[:uid]
@@ -21,27 +18,28 @@ class User < ApplicationRecord
     id.split('-').first
   end
 
-  def team
-    teams.active.last
-  end
-
-  def associate_team(team)
-    transaction do
-      self.teams.clear
-      self.teams << team
-    end
-  end
-
   def create_team(team_params)
     transaction do
       team = Team.new(team_params)
-
+      team.leader = self
       if team.save
-        UserTeam.create!(user: self, team: team, leader: true)
-
+        self.team = team
+        self.save
         return team, true
       else
         return team, false
+      end
+    end
+  end
+
+  def accept_invitation(invitation)
+    transaction do
+      self.team = invitation.team
+      if self.save
+        invitation.accept
+        return true
+      else
+        return false
       end
     end
   end

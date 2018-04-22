@@ -9,21 +9,19 @@
     margin-top: 10px;
     margin-left: 4px;
   }
+}
+.comment-avatar {
+  flex: 0;
+  display: block;
+  width: 64px;
+  height: 64px;
+  background-color: #ccc;
+}
 
-  .comment-avatar {
-    flex: 0;
-    display: block;
-    width: 64px;
-    height: 64px;
-    background-color: #ccc;
-  }
+.comment-name {
+  font-weight: bold;
+}
 
-  .comment-name {
-    font-weight: bold;
-  }
-
-  .comment-description {
-    font-style: italic;
-  }
-
+.comment-description {
+  font-style: italic;
 }

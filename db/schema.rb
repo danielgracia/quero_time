@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528280627) do
+ActiveRecord::Schema.define(version: 20180420044923) do
 
   create_table "comments", force: :cascade do |t|
     t.string "description"
@@ -43,61 +43,15 @@ ActiveRecord::Schema.define(version: 20170528280627) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
-  create_table "skill_levels", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "skills", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "team_requirements", force: :cascade do |t|
-    t.integer "skill_id"
-    t.integer "skill_level_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "count"
-    t.integer "teams_id"
-    t.integer "team_id"
-    t.index ["skill_id"], name: "index_team_requirements_on_skill_id"
-    t.index ["skill_level_id"], name: "index_team_requirements_on_skill_level_id"
-    t.index ["team_id"], name: "index_team_requirements_on_team_id"
-    t.index ["teams_id"], name: "index_team_requirements_on_teams_id"
-  end
-
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "information"
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "user_skills", force: :cascade do |t|
-    t.string "user_id"
-    t.integer "skill_id"
-    t.integer "skill_level_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["skill_id"], name: "index_user_skills_on_skill_id"
-    t.index ["skill_level_id"], name: "index_user_skills_on_skill_level_id"
-    t.index ["user_id"], name: "index_user_skills_on_user_id"
-  end
-
-  create_table "user_teams", force: :cascade do |t|
-    t.string "user_id"
-    t.integer "team_id"
-    t.boolean "leader"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_user_teams_on_team_id"
-    t.index ["user_id"], name: "index_user_teams_on_user_id"
+    t.integer "leader_id"
+    t.text "observations"
+    t.index ["leader_id"], name: "index_teams_on_leader_id"
   end
 
   create_table "users", id: :string, force: :cascade do |t|
@@ -108,7 +62,10 @@ ActiveRecord::Schema.define(version: 20170528280627) do
     t.integer "lock_version"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "personal_information"
+    t.integer "team_id"
     t.index ["id"], name: "sqlite_autoindex_users_1", unique: true
+    t.index ["team_id"], name: "index_users_on_team_id"
   end
 
 end
