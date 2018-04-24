@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :team_give_up]
+  before_action :set_user, only: [:show, :edit, :update, :team_give_up, :invite]
   before_action :check_user, only: [:edit, :update]
 
   # GET /users
