@@ -17,7 +17,7 @@
         <td><%= invitation.team.information %></td>
         <td><%= invitation.team.users.count %></td>
         <td><%= link_to 'Aceitar', accept_invitation_path(invitation), method: :post %></td>
-        <td><%= link_to 'Remover', invitation, method: :delete, data: { confirm: 'Voce tem certeza?' } %></td>
+        <td><%= link_to 'Rejeitar', invitation, method: :delete, data: { confirm: 'Voce tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
