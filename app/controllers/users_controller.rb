@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :invite, :team_give_up]
+  skip_before_filter :verify_authenticity_token
+  before_action :set_user, only: [:show, :edit, :update, :team_give_up]
   before_action :check_user, only: [:edit, :update]
 
   # GET /users
